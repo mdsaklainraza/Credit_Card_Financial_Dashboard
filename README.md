@@ -17,7 +17,7 @@ effectively.
 
 #DAX Queries:
 
-AgeGroup = SWITCH(
+* AgeGroup = SWITCH(
     TRUE(),
     'ccdb cust_detail'[Customer_Age]<30,"20-30",
     'ccdb cust_detail'[Customer_Age]>=30 && 'ccdb cust_detail'[Customer_Age]<40,"30-40",
@@ -26,36 +26,36 @@ AgeGroup = SWITCH(
     'ccdb cust_detail'[Customer_Age]>=60,"60+",
     "Unkown")
     
-IncomeGroup = SWITCH(
+* IncomeGroup = SWITCH(
     TRUE(),
   'ccdb cust_detail'[Income]<35000,"Low",
   'ccdb cust_detail'[Income]>=35000 && 'ccdb cust_detail'[Income]<70000,"Med",
   'ccdb cust_detail'[Income]>=70000,"High",
   "Unkown")
 
-Revenue = 'ccdb cc_detail'[Annual_Fees]+'ccdb cc_detail'[Total_Trans_Amt]+'ccdb cc_detail'[Interest_Earned]
+* Revenue = 'ccdb cc_detail'[Annual_Fees]+'ccdb cc_detail'[Total_Trans_Amt]+'ccdb cc_detail'[Interest_Earned]
 
-Week_num2 = WEEKNUM('ccdb cc_detail'[Week_Start_Date])
+* Week_num2 = WEEKNUM('ccdb cc_detail'[Week_Start_Date])
 
-Current_week_Revenue = CALCULATE(
+* Current_week_Revenue = CALCULATE(
     SUM('ccdb cc_detail'[Revenue]),
     FILTER(
         ALL('ccdb cc_detail'),
         'ccdb cc_detail'[Week_num2]=MAX('ccdb cc_detail'[Week_num2])))
 
 
-Previous_week_Revenue = CALCULATE(
+* Previous_week_Revenue = CALCULATE(
     SUM('ccdb cc_detail'[Revenue]),
     FILTER(
         ALL('ccdb cc_detail'),
         'ccdb cc_detail'[Week_num2]=MAX('ccdb cc_detail'[Week_num2])-1))
 
-Wow_Revenue = DIVIDE([Current_week_Revenue]-[Previous_week_Revenue],[Previous_week_Revenue])
+* Wow_Revenue = DIVIDE([Current_week_Revenue]-[Previous_week_Revenue],[Previous_week_Revenue])
 
 
 #Project Insights- Week 53 (31st Dec):
 
-WoW change: 
+* WoW change: 
 
 • Revenue increased by 28.8%, 
 
@@ -63,7 +63,7 @@ WoW change:
 
 • Customer count increased by 28.31%
 
-Overview YTD:
+* Overview YTD:
 
 • Overall revenue is 57M
 
